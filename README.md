@@ -8,7 +8,8 @@ Fallback、健康檢查、用量與花費追蹤，並且提供 Web UI 與 MCP Se
 ## 專案緣起
 
 這是「2026 IT邦幫忙鐵人賽」系列文章的實作專案，文章陸續發布在
-[這裡](https://ithelp.ithome.com.tw/users/20183586/ironman/9391)。動機是
+[從呼叫 API 到打造 Gateway：LLM 工程化 30 天 系列](https://ithelp.ithome.com.tw/users/20183586/ironman/9391)。
+動機是
 參考公司內部一套正式版 LLM Gateway 的架構設計，在個人規模上重新做一次，
 驗證那些架構決策（Provider Adapter 抽象、Credential/Deployment 兩層設定、
 Fallback、兩層健康檢查……）哪些是規模無關的通用道理、哪些只是企業級規模
