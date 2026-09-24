@@ -1,0 +1,57 @@
+@import 'tailwindcss';
+
+/* 語意化色票沿用另一套正式版 Router 專案的命名方式（原本在 tailwind.config.ts 的
+   theme.colors，Tailwind v4 改用 CSS 端的 @theme 定義），讓 Badge/StatCard
+   等元件引用語意名稱而非寫死 hex。*/
+@theme {
+  /* Inter 放最前面：英文/數字用 Inter，Inter 沒有的中文字符自動 fallback
+     到微軟正黑體/PingFang TC，兩者互不衝突。var(--font-inter) 是
+     layout.tsx 用 next/font/google 載入 Inter 時產生的 CSS 變數。 */
+  --font-sans:
+    var(--font-inter), 'Microsoft JhengHei', 'PingFang TC', 'Noto Sans TC', system-ui, sans-serif;
+
+  /* 狀態語意色（健康度/啟用停用/成功失敗/額度警示）維持不變——這幾個顏色
+     傳遞的是功能性資訊，不是裝飾，黑白化改版時刻意排除在外（使用者
+     2026-09-19 確認）。 */
+  --color-success: #16a34a;
+  --color-success-bg: #dcfce7;
+  --color-warning: #ca8a04;
+  --color-warning-bg: #fef9c3;
+  --color-danger: #dc2626;
+  --color-danger-bg: #fee2e2;
+
+  /* 介面主色改成黑白灰簡約風格（原本是藍色），參考使用者提供的設計稿。
+     text/primary 用同一個深炭黑，跟整體「靠字重/線條分層，不靠色彩」的
+     氣質一致。 */
+  --color-primary: #1a1a1a;
+  --color-primary-light: #f0f0ee;
+  --color-primary-dark: #000000;
+  --color-text: #1a1a1a;
+  --color-text-muted: #6b6b6b;
+  --color-text-small: #9c9c9c;
+  /* card-border 跟 surface 的對比度要夠——原本兩者太接近，白底卡片的邊框
+     幾乎融進背景色，看起來像整個沒有邊框（使用者 2026-09-19 回報）。 */
+  --color-shell: #dcdcd8;
+  --color-card-border: #c9c9c4;
+  --color-surface: #f2f1ee;
+
+  /* 資料視覺化（花費趨勢長條圖）刻意保留原本的藍色，跟 UI 主色脫鉤——
+     使用者確認圖表本身的顏色不用跟著黑白化，這是唯一的例外，見
+     DailyCostChart.tsx。 */
+  --color-chart-accent: #185fa5;
+}
+
+body {
+  @apply bg-surface text-text font-sans;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 瀏覽器對 <button> 的預設游標是 default（箭頭），不是 pointer（手指）
+   ——跟 <a href> 不一樣，這是常見的坑。專案裡所有按鈕（Button/
+   RowActionButton/Tabs/Dialog 關閉鈕……）都沒有另外設定，滑鼠移上去
+   完全沒有「這是可以點的東西」的提示（使用者 2026-09-19 回報）。統一在
+   這裡設一次，不用每個按鈕元件各自補 cursor-pointer。 */
+button:not(:disabled) {
+  cursor: pointer;
+}

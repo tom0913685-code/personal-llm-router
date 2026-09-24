@@ -1,0 +1,1 @@
+ALTER TABLE `model_deployments` ADD `last_manual_checked_at` text;

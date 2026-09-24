@@ -1,0 +1,15 @@
+node_modules
+frontend/node_modules
+dist
+frontend/.next
+data
+.env
+frontend/.env
+.git
+.gitignore
+*.tsbuildinfo
+test-results
+playwright-report
+blob-report
+e2e
+docs

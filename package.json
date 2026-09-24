@@ -1,0 +1,32 @@
+{
+  "name": "personal-llm-router",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test \"dist/**/*.test.js\"",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "start": "node --env-file=.env dist/server.js",
+    "dev:server": "npm run build && npm run start",
+    "mcp": "node --env-file=.env dist/mcp/server.js",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.65.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "better-sqlite3": "^13.0.3",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.0.0",
+    "drizzle-kit": "^0.31.10",
+    "typescript": "^5.9.0"
+  }
+}
